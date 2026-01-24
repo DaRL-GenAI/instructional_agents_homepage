@@ -1,6 +1,6 @@
 # Instructional Agents
 
-This is the repository that contains source code for the [website of Instructional Agents](https://hyan-yao.github.io/instructional_agents_homepage/).
+This is the repository that contains source code for the [website of Instructional Agents](https://darl-genai.github.io/instructional_agents_homepage/).
 
 If you find this useful for your work please cite:
 ```
