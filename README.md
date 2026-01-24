@@ -5,7 +5,7 @@ This is the repository that contains source code for the [website of Instruction
 If you find this useful for your work please cite:
 ```
 @misc{yao2025instructionalagentsllmagents,
-  title={Instructional Agents: LLM Agents on Automated Course Material Generation for Teaching Faculties},
+  title={Instructional Agents: Reducing Teaching Faculty Workload through Multi-Agent Instructional Design},
   author={Yao, Huaiyuan and Xu, Wanpeng and Turnau, Justin and Kellam, Nadia and Wei, Hua},
   year={2025},
   eprint={2508.19611},
