@@ -20,12 +20,5 @@ If you find this useful for your work please cite:
 
 # Studio (browser edition)
 
-`studio/` is a static, framework-free web app served from this site at
-<https://darl-genai.github.io/instructional_agents_homepage/studio/>. It runs the Instructional
-Agents ADDIE pipeline entirely in the visitor's browser with their own OpenAI-compatible API key
-(the key never leaves the browser except to the configured API endpoint).
-
-Files: `studio/index.html`, `studio/studio.css`, `studio/js/` (`llm.js` API client, `prompts.js`
-agent prompts mirrored from `instructional_agents/src/ADDIE.py`, `pipeline.js` stage runners,
-`slides.js` HTML/Beamer/PPTX rendering, `video.js` TTS + MediaRecorder video, `export.js` ZIP,
-`state.js` persistence and audit log, `app.js` UI). No build step: edit and push.
+The interactive Studio lives in its own repository: <https://github.com/DaRL-GenAI/instructional_agents_studio>
+(live at <https://darl-genai.github.io/instructional_agents_studio/>). This site only links to it.
