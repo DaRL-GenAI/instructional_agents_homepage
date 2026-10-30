@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="Citations Are Not Enough: Grounding AI-Generated Instructional Materials in Real Sources. Textbook grounding for Instructional Agents.">
+  <meta name="keywords" content="Agents, Education, LLM, Grounding, Textbook, RAG">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Citations Are Not Enough: Grounding AI-Generated Instructional Materials in Real Sources</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-29919VV72V"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-29919VV72V');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="../static/css/bulma.min.css">
+  <link rel="stylesheet" href="../static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="../static/css/index.css">
+  <link rel="icon" href="../static/images/sun_devil.webp">
+
+  <script defer src="../static/js/fontawesome.all.min.js"></script>
+</head>
+<body>
+
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-menu is-active" style="box-shadow:none">
+    <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+      <a class="navbar-item" href="https://labs.engineering.asu.edu/hw/">
+      <span class="icon">
+          <i class="fas fa-home"></i>
+      </span>
+      </a>
+      <a class="navbar-item" href="../">
+        Instructional Agents (EACL 2026)
+      </a>
+    </div>
+  </div>
+</nav>
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">Citations Are Not Enough: Grounding AI-Generated Instructional Materials in Real Sources</h1>
+          <!-- Authors: to be added. -->
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">Authors to be announced</span>
+          </div>
+
+          <p class="is-size-5 has-text-centered"
+            style="color:#b60000; font-weight:600; display:block;">
+            AI-Native Academia Workshop at NeurIPS 2026 (Poster)
+          </p>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- Paper Link: add when available. -->
+              <span class="link-block">
+                <a class="external-link button is-normal is-rounded is-dark" disabled
+                   title="Coming soon" style="pointer-events:none; opacity:.5">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper (coming soon)</span>
+                </a>
+              </span>
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="https://github.com/DaRL-GenAI/instructional_agents/tree/feature/textbook-grounding"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+              <!-- Base project. -->
+              <span class="link-block">
+                <a href="../"
+                   class="external-link button is-normal is-rounded is-danger">
+                  <span class="icon">
+                      <i class="fas fa-arrow-left"></i>
+                  </span>
+                  <span>Instructional Agents</span>
+                  </a>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section" style="padding-top:0">
+  <div class="container is-max-desktop">
+    <div class="box" style="border-left:6px solid #b60000">
+      <p>
+        This work extends <a href="../"><strong>Instructional Agents</strong></a> (EACL 2026), a multi-agent framework that generates a full course: syllabus, slides, lecture scripts and assessments.
+        It adds an opt-in textbook mode. With <code>--use-textbook PATH</code>, every slide is written from passages of the instructor's textbook, and every slide sentence is checked against that book.
+        Without the flag, Instructional Agents runs as before.
+      </p>
+    </div>
+    <div style="text-align:center;">
+      <img src="../static/images/grounding/pipeline.gif"
+           alt="Animated walkthrough: a textbook is parsed and indexed, each course week is bound to its own textbook sections, each slide is written from those passages, and every slide sentence is checked against the book"
+           style="max-width: 100%; height: auto;">
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3">Why ground course materials in a textbook?</h2>
+    <div class="content has-text-justified">
+      <p>
+        Instructional Agents writes a course from the language model's own knowledge.
+        A course taught from a textbook should instead say what that book says, and the instructor should be able to check it.
+        Placing the whole chapter in the prompt does not solve this: much of what the model writes is still absent from the book.
+        Controlling which passages the model sees works better.
+      </p>
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3">How does it work?</h2>
+    <img src="../static/images/grounding/how-it-works.png"
+         alt="Five steps: parse the textbook, index it, bind each course week to its own sections, write each slide only from its week's passages, and check every sentence. The check writes a fidelity report and never edits the slides."
+         style="max-width: 100%; height: auto; padding-bottom: 20px;">
+    <div class="content has-text-justified">
+      <ol>
+        <li><strong>Parse.</strong> A PDF or markdown textbook becomes a chapter, section and paragraph structure. Figures are kept as images, and images of equations are converted to LaTeX.</li>
+        <li><strong>Index.</strong> Paragraphs are split into chunks of about 512 tokens and indexed for keyword search (BM25) and semantic search (<code>text-embedding-3-large</code>). Reciprocal rank fusion combines the two rankings.</li>
+        <li><strong>Bind.</strong> Before any slide is written, each course week is bound to a small set of textbook sections, chosen by ranking sections across several queries expanded from the week's topic. A week that matches the book weakly is still bound to its best sections, and the low confidence is recorded.</li>
+        <li><strong>Write.</strong> Each slide is written only from passages retrieved from its week's sections. The writer teaches in its own words, keeps worked examples and notation, and adds nothing the passages do not support. Textbook figures, captions and tables are carried onto the slides.</li>
+        <li><strong>Check.</strong> Every slide sentence is judged against the full text of the week's sections. A sentence counts as supported only when the judge quotes supporting text that is then found word for word in the book. The check writes a per-chapter fidelity report and never edits the slides.</li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3">How much of the slides does the textbook support?</h2>
+    <div class="content has-text-justified">
+      <p>
+        We measure <strong>Grounding Fidelity</strong>: the share of slide sentences that the textbook supports.
+        On three matched chapters, textbook grounding reaches <strong>77.5%</strong>, compared with 64.6% for the original generator given the full chapter text.
+        Across twelve course weeks, it reaches <strong>60.9%</strong> versus 47.9%.
+      </p>
+    </div>
+    <img src="../static/images/grounding/results.png"
+         alt="Grounding Fidelity, the share of slide sentences the textbook supports. Three matched chapters: 64.6% for the original generator given the full chapter text, 77.5% with textbook grounding. Twelve course weeks: 47.9% versus 60.9%."
+         style="max-width: 100%; height: auto; padding-bottom: 30px;">
+
+    <h3 class="title is-4">Which components matter?</h3>
+    <div class="content has-text-justified">
+      <p>
+        Removing one component at a time on the three matched chapters lowers fidelity in every case.
+        Chapter binding matters most: without it, fidelity falls from 77.5% to 53.1%, below the 64.6% of the original generator with the full chapter.
+        Removing structured parsing, grounding instructions or dense indexing gives 67.6%, 63.6% and 63.1%.
+      </p>
+    </div>
+    <img src="../static/images/grounding/ablation.png"
+         alt="Removing one part at a time on three matched chapters: full pipeline 77.5%, without structured parsing 67.6%, without grounding instructions 63.6%, without dense indexing 63.1%, without chapter binding 53.1%. The original generator with the full chapter scores 64.6%."
+         style="max-width: 100%; height: auto; padding-bottom: 30px;">
+
+    <h3 class="title is-4">Week by week</h3>
+    <div class="content has-text-justified">
+      <p>
+        Grounding is ahead of the original generator in eight of the twelve weeks.
+        The automated judge agrees with majority human labels on 90.8% of decidable claims.
+        Fidelity measures precision, not coverage: it reports how much of what was written the book supports, not how much of the book was taught.
+      </p>
+    </div>
+    <img src="../static/images/grounding/per-week.png"
+         alt="Grounding Fidelity for each of the twelve course weeks, original generator versus textbook grounding. Grounding is ahead in eight weeks."
+         style="max-width: 100%; height: auto;">
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3">Quick start</h2>
+    <pre><code>git clone -b feature/textbook-grounding https://github.com/DaRL-GenAI/instructional_agents.git
+cd instructional_agents
+pip install -e ".[grounding]"
+export OPENAI_API_KEY=your_api_key_here
+
+# Generate a course from your textbook
+python run.py "Data Mining" --catalog default_catalog --exp dm_grounded \
+    --use-textbook path/to/textbook.pdf
+
+# Score it, including the course-level Grounding Fidelity %
+python evaluate.py --exp dm_grounded --rigorous</code></pre>
+    <div class="content has-text-justified" style="padding-top: 12px;">
+      <p>
+        Bring your own PDF or markdown textbook; none ships with the repository.
+        Each chapter's output includes a Beamer deck with textbook figures, a speaker script, an assessment, and <code>content_verification.json</code>, which lists every sentence as supported (with its quote) or flagged.
+        See the <a href="https://github.com/DaRL-GenAI/instructional_agents/tree/feature/textbook-grounding#readme">README</a> for all options.
+      </p>
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3">Known limitations</h2>
+    <div class="content has-text-justified">
+      <ul>
+        <li>Broad survey weeks, such as an introduction or a review, match the book weakly and usually score lower.</li>
+        <li>A deck can score high on fidelity while covering only part of a chapter.</li>
+        <li>The judge is a language model. Its quotes are checked mechanically, but individual verdicts can still be wrong.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <p>A BibTeX entry for this paper will be added with the camera-ready version. Please also cite Instructional Agents, which this work builds on:</p>
+    <pre><code>@misc{yao2025instructionalagentsllmagents,
+  title={Instructional Agents: Reducing Teaching Faculty Workload through Multi-Agent Instructional Design},
+  author={Yao, Huaiyuan and Xu, Wanpeng and Turnau, Justin and Kellam, Nadia and Wei, Hua},
+  year={2025},
+  eprint={2508.19611},
+  archivePrefix={arXiv},
+  primaryClass={cs.AI},
+  url={https://arxiv.org/abs/2508.19611},
+}</code></pre>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            Part of the <a href="../">Instructional Agents</a> project. This website is licensed under a <a rel="license"
+                                                href="http://creativecommons.org/licenses/by-sa/4.0/">MIT License</a>,
+            adapted from the <a href="https://github.com/nerfies/nerfies.github.io">Nerfies</a> template.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
