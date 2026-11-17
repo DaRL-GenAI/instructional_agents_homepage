@@ -142,7 +142,7 @@
               </span>
               <!-- Studio (browser demo) -->
               <span class="link-block">
-                <a href="https://darl-genai.github.io/instructional_agents_studio/"
+                <a href="#studio"
                    class="external-link button is-normal is-rounded is-danger">
                   <span class="icon">
                       <i class="fas fa-play"></i>
@@ -198,16 +198,22 @@
 <section class="section" id="studio" style="padding-top:0">
   <div class="container is-max-desktop">
     <div class="box" style="border-left:6px solid #b60000">
-      <h2 class="title is-4">Instructional Agents Studio — run the pipeline in your browser</h2>
+      <h2 class="title is-4">Instructional Agents Studio: the no-code app for instructors</h2>
       <p>
-        Bring your own OpenAI-compatible API key and generate a complete course without installing anything:
-        learning objectives, learner and resource analysis, syllabus, assessment plan, final project, and for every chapter a slide deck
-        (HTML / Beamer / PPTX), lecture script, homework, hands-on lab and a narrated lecture video with captions.
-        Every agent prompt and response is shown, every deliverable is editable, and every call and edit is written to an exportable audit trail.
+        Run the pipeline on your own computer with one command, no Python or Docker:
+      </p>
+      <pre style="margin:10px 0">npx instructional-agents</pre>
+      <p>
+        Generate a course from scratch (learning objectives, syllabus, assessment plan, and for every chapter slides, a lecture script,
+        homework, a lab and a narrated video), or open a folder of slides you already have and rebuild the syllabus and objectives from them.
+        Slides and Word files open in a built-in editor, Claude Code and Codex run inside the app to edit any file in the course,
+        and every change is kept as a version you can restore. A browser edition runs without installing anything.
       </p>
       <p style="margin-top:12px">
-        <a class="button is-danger is-rounded" href="https://darl-genai.github.io/instructional_agents_studio/"><span class="icon"><i class="fas fa-play"></i></span><span>Open Studio</span></a>
-        &nbsp;<a class="button is-rounded is-light" href="https://github.com/DaRL-GenAI/instructional_agents"><span class="icon"><i class="fab fa-github"></i></span><span>Python pipeline (LaTeX/PDF, batch runs)</span></a>
+        <a class="button is-danger is-rounded" href="https://github.com/DaRL-GenAI/instructional_agents_studio/blob/main/docs/user-guide.md"><span class="icon"><i class="fas fa-book-open"></i></span><span>User guide</span></a>
+        &nbsp;<a class="button is-rounded is-light" href="https://darl-genai.github.io/instructional_agents_studio/"><span class="icon"><i class="fas fa-play"></i></span><span>Browser edition</span></a>
+        &nbsp;<a class="button is-rounded is-light" href="https://github.com/DaRL-GenAI/instructional_agents_studio"><span class="icon"><i class="fab fa-github"></i></span><span>Studio code</span></a>
+        &nbsp;<a class="button is-rounded is-light" href="https://github.com/DaRL-GenAI/instructional_agents"><span class="icon"><i class="fab fa-github"></i></span><span>Python pipeline</span></a>
       </p>
     </div>
     <div class="box" style="border-left:6px solid #363636">

@@ -18,7 +18,8 @@ If you find this useful for your work please cite:
 # Website License
 <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
 
-# Studio (browser edition)
+# Studio
 
-The interactive Studio lives in its own repository: <https://github.com/DaRL-GenAI/instructional_agents_studio>
-(live at <https://darl-genai.github.io/instructional_agents_studio/>). This site only links to it.
+The Studio lives in its own repository: <https://github.com/DaRL-GenAI/instructional_agents_studio>.
+Run it with `npx instructional-agents` (local app; [user guide](https://github.com/DaRL-GenAI/instructional_agents_studio/blob/main/docs/user-guide.md)) or in the browser at
+<https://darl-genai.github.io/instructional_agents_studio/>. This site only links to it.
